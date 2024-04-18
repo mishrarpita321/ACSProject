@@ -1,0 +1,25 @@
+.uploadbtn {
+    background-color: #8e62a0;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    position: relative;
+    box-shadow: 2px 4px 6px rgba(0,0,0,0.2); 
+    transition: box-shadow 0.3s ease; 
+}
+
+.uploadbtn:hover {
+    box-shadow: 4px 8px 12px rgba(0,0,0,0.3); 
+    background: linear-gradient(120deg, #8e62a0, #eca1fe); 
+}
+
+.btnlabel {
+    position: absolute;
+    left: 50%;
+}
