@@ -1,0 +1,52 @@
+.appBarTitle{
+    margin: 0;
+    padding-left: 20px; /* Keep the title away from the very edge */
+    font-size: 24px;
+    text-align: left;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Consider removing text shadow if background is white */
+}
+
+
+.appBar {
+    /* Gradient starts with blue and transitions to white at 30% of the width */
+    /* background: linear-gradient(to right, #4285F4 0%, #4285F4 30%, white 30%, white 100%); */
+    background: linear-gradient(to right, #4285F4 0%, #4285F4 30%, white 90%);
+    padding: 20px;
+    margin-bottom: 20px;
+    color: white; /* You might need to adjust the text color depending on the background */
+}
+
+.floating_btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: linear-gradient(45deg, #36d1dc, #5b86e5); /* Gradient background */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px; /* Circular edges */
+    font-size: 18px;
+    font-family: 'Arial', sans-serif; /* Choose a trendy font if you prefer */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+    animation: blink_animation 1.5s infinite;
+    z-index: 10;
+    border: none; /* No border */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transitions for interaction */
+    display: flex; /* To center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.floating_btn:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3); /* Larger shadow on hover */
+}
+
+/* Blinking animation */
+@keyframes blink_animation {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
