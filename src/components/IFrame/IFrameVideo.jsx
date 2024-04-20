@@ -9,8 +9,6 @@ const IFrameVideo = () => {
             <div className={styles.iframevideo}>
                 <iframe
                     title="file-preview"
-                    // src={fileSrc ? fileSrc : 'https://www.youtube.com/embed/dQw4w9WgXcQ'}
-                    // src={fileSrc}
                     src={fileSrc}
                     allowFullScreen
                     style={{
