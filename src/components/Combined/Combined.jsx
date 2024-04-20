@@ -1,5 +1,8 @@
 import EmojiPicker from "../Emotion/EmojiPicker";
 import IFrame from "../IFrame/IFrame"
+import IFrameVideo from "../IFrame/IFrameVideo";
+import People from "../People/People";
+import styles from './Combined.module.css'
 
 const Combined = () => {
     return (
