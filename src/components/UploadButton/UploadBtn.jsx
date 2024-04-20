@@ -13,11 +13,7 @@ const UploadBtn = ({ setFileSrc }) => {
 
     return (
         <div className={styles.uploadbtn}>
-            <input type="file" id="file-upload" style={{ display: 'none' }} onChange={handleFileChange} />
-            <label htmlFor="file-upload">
-                <FiUpload />
-                <span className={styles.btnlabel}>Upload</span>
-            </label>
+            <input type="file" id="file-upload" onChange={handleFileChange} />
         </div>
     );
 };

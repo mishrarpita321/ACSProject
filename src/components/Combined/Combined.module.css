@@ -1,0 +1,5 @@
+.verticalLine {
+	border-left: 3px solid;
+	border-image: linear-gradient(to bottom, #f8f9fa, rgba(0,0,0,0.2), #f8f9fa) 1;
+}
+
