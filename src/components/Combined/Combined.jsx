@@ -10,13 +10,13 @@ const Combined = () => {
         <>
             <Header />
             <div className="container">
-                <div className="row">
-                    <div className="col-md-6">
+                <div style={{position:"relative"}} className="row">
+                    <div className={`col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Video</h1>
                         <IFrameVideo />
                     </div>
-                    <div className={`col-md-1 ${styles.verticalLine}`}></div>
-                    <div className="col-md-5">
+                    <div className={`d-none d-lg-block col-lg-1 ${styles.verticalLine}`}></div>
+                    <div className={`col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Image</h1>
                         <IFrame />
                     </div>

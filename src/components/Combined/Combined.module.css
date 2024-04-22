@@ -1,5 +1,12 @@
 .verticalLine {
+	height: 100%;
+	position:absolute;
+	left: 50%;
 	border-left: 3px solid;
 	border-image: linear-gradient(to bottom, #f8f9fa, rgba(0,0,0,0.2), #f8f9fa) 1;
 }
 
+.iFrameContainer{
+	/* padding-left: 10px; */
+	/* padding-right: 10px; */
+}
