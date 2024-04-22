@@ -18,7 +18,7 @@ const Combined = () => {
                         <People />
                     </div>
                     <div className={`d-none d-lg-block ${styles.verticalLine}`}></div>
-                    <div className={` col-12 d-lg-none ${styles.horizontalLine}`}></div>
+                    <div className={` col-12 d-md-none ${styles.horizontalLine}`}></div>
                     <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Image</h1>
                         <IFrame />
