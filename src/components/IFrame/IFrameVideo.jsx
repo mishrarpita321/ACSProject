@@ -1,21 +1,21 @@
-import UploadBtn from "../UploadButton/UploadBtn";
 import React, { useState } from 'react';
+import UploadBtn from "../UploadButton/UploadBtn";
 import styles from './IFrame.module.css';
 
 const IFrameVideo = () => {
     const [fileSrc, setFileSrc] = useState(null);
+
     return (
         <>
-            <div className={styles.iframevideo}>
+            <div className={styles.iframeContainer}>
                 <iframe
                     title="file-preview"
                     src={fileSrc}
                     allowFullScreen
+                    className={styles.iframevideo}
                     style={{
-                        width: '533px',
-                        height: '300px',
-                        border: '1px solid black',
-                        backgroundColor: '#e9ecef',
+                        border: 'none',  // Border handled by container
+                        backgroundColor: fileSrc ? 'transparent' : '#e9ecef'  // Background conditional on content
                     }}
                 />
             </div>

@@ -12,3 +12,32 @@
     background-color: rgba(0, 0, 0, 0.125);
     box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
 } */
+
+
+
+
+.iframeContainer {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border: 1px solid black;
+    background-color: #e9ecef;
+}
+
+.iframevideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    /* Remove border here, handled by container if needed */
+}

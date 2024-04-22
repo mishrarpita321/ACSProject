@@ -1,5 +1,23 @@
 .verticalLine {
+	width: 1px;
+	height: 100%;
+	position:absolute;
+	left: 50%;
 	border-left: 3px solid;
 	border-image: linear-gradient(to bottom, #f8f9fa, rgba(0,0,0,0.2), #f8f9fa) 1;
 }
+.horizontalLine {
+	margin: 30px;
+	/* width: 1px; */
+	/* height: 100%; */
+	/* position:absolute; */
+	/* left: 50%; */
+	border-bottom: 3px solid;
+	border-image: linear-gradient(to bottom, #f8f9fa, rgba(0,0,0,0.2), #f8f9fa) 1;
+}
 
+.iFrameContainer{
+
+	padding-left: 63px;
+	padding-right: 63px;
+}

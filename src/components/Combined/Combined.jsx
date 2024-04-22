@@ -10,34 +10,19 @@ const Combined = () => {
         <>
             <Header />
             <div className="container">
-                <div className="row">
-                    <div className="col-md-6">
+                <div style={{position:"relative"}} className="row">
+                    <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Video</h1>
                         <IFrameVideo />
-                    </div>
-                    <div className={`col-md-1 ${styles.verticalLine}`}></div>
-                    <div className="col-md-5">
-                        <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Image</h1>
-                        <IFrame />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-6">
-                        <div className="col-md-8">
-                            <EmojiPicker />
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="col-md-8">
-                            <EmojiPicker />
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-6">
+                        <EmojiPicker />
                         <People />
                     </div>
-                    <div className="col-md-6">
+                    <div className={`d-none d-lg-block ${styles.verticalLine}`}></div>
+                    <div className={` col-12 d-md-none ${styles.horizontalLine}`}></div>
+                    <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
+                        <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Image</h1>
+                        <IFrame />
+                        <EmojiPicker />
                         <People />
                     </div>
                 </div>
