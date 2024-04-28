@@ -10,7 +10,7 @@ import ComparisonTable from "../Comparison/ComparisonTable";
 const Combined = () => {
     return (
         <>
-            <Header />
+            <Header title="Vision API vs. Video Intelligence API" />
             <div className="container">
                 <div style={{ position: "relative" }} className="row">
                     <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
