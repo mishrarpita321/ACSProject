@@ -1,0 +1,6 @@
+/* VideoPlayer.module.css */
+.videoPlayer {
+    width: 100%;
+    max-height: 500px; /* You can set a max-height to maintain aspect ratio */
+  }
+  
