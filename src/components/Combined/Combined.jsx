@@ -6,8 +6,13 @@ import styles from './Combined.module.css'
 import Header from "../Header/Header";
 import TableLoader from "../table_placeholder_loader/TableLoader";
 import ComparisonTable from "../Comparison/ComparisonTable";
+import VideoPlayer from "../Combo/VideoPlayer/VideoPlayer";
+import { useRef, useState } from "react";
+import UploadBtn from "../UploadButton/UploadBtn";
 
 const Combined = () => {
+    const videoRef = useRef(null);
+    const [VideoSrc, setVideoSrc] = useState(null);
     return (
         <>
             <Header title="Vision API vs. Video Intelligence API" />
@@ -15,7 +20,14 @@ const Combined = () => {
                 <div style={{ position: "relative" }} className="row">
                     <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Video</h1>
-                        <IFrameVideo />
+                        {/* <IFrameVideo /> */}
+                        <VideoPlayer
+                            src={VideoSrc}
+                            onLoadedMetadata={() => { }}
+                            onTimeUpdate={(e) => setCurrentVideoTime(e.target.currentTime)}
+                            videoRef={videoRef}
+                        />
+                        <UploadBtn setFileSrc={setVideoSrc} />
                         <EmojiPicker />
                         <People />
                     </div>
