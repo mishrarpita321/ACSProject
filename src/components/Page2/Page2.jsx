@@ -4,7 +4,7 @@ import IFrameVideoCombined from "../IFrame/IFrameVideoCombined";
 import UploadBtn from "../UploadButton/UploadBtn";
 import style from "./Page2.module.css";
 import ComboFaceContainer from "../Combo/ComboFaceContainer/ComboFaceContainer";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Tooltip } from "../Combo/TimeLine/Tooltip";
 import TimeLine from "../Combo/TimeLine/TimeLine";
 import VideoPlayer from "../Combo/VideoPlayer/VideoPlayer";
@@ -71,7 +71,7 @@ const data = {
                 {
                     "id": 3,
                     "image": "https://img.icons8.com/color/150/000000/happy.png",
-                    "time": "00:00:00",
+                    "time": "00:00:20",
                     "features": [
                         {
                             "feature": "glasses",
@@ -98,7 +98,7 @@ const data = {
                 {
                     "id": 4,
                     "image": "https://img.icons8.com/color/150/000000/happy.png",
-                    "time": "00:00:00",
+                    "time": "00:00:40",
                     "features": [
                         {
                             "feature": "glasses",
@@ -503,6 +503,7 @@ const transformDataToFaceData = (data) => {
   };
 
 const Page2 = () => {
+    const videoRef = useRef(null); 
     const [videoLength, setVideoLength] = useState(null); // initially no video length
     const [currentVideoTime, setCurrentVideoTime] = useState('00:00:00');
 
@@ -512,26 +513,31 @@ const Page2 = () => {
 
 
     const handleTimestampClick = (time) => {
-        // Logic to seek the video to the clicked timestamp
+        const parts = time.split(':');
+        const seconds = parseInt(parts[0]) * 3600 + parseInt(parts[1]) * 60 + parseInt(parts[2]);
+        
+        if (videoRef.current) {
+            videoRef.current.currentTime = seconds;
+            videoRef.current.play();
+        }
     };
 
 
     const faceData =  transformDataToFaceData(data);
 
-    // Total length of the video in seconds
-    // const videoLength = 3600; // for example, 1 hour
+
     return (
         <>
             <Header title="title of page 2" />
             <div className={`container`}>
                 <div className="row">
                     <div className="col-12 col-md-6">
-                        {/* <IFrameVideoCombined /> */}
                         <div>
                             <VideoPlayer
                                 src="./face_dec.mp4"
                                 onLoadedMetadata={handleMetadata}
                                 onTimeUpdate={(e) => setCurrentVideoTime(e.target.currentTime)}
+                                videoRef={videoRef}
                             />
 
                         </div>
@@ -549,7 +555,7 @@ const Page2 = () => {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="row" style={{marginTop:"50px",marginBottom:"15px"}}>
                     <TimeLine
                         faceData={faceData}
                         videoLength={videoLength}

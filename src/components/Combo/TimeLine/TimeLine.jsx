@@ -11,11 +11,14 @@ const TimeLine = ({ faceData, videoLength, onTimestampClick }) => {
 
   return (
     <>
-      <div>
-        <div className={`${style.timeline}`}>
-          <div className={`text-capitalize ${style.sentimentTitle}`}>
-            {'faces'}
-          </div>
+      {/* <div className='col'> */}
+      <div className={`col ${style.titleContainer}`}>
+        <div className={` text-capitalize ${style.title}`}>
+          {`faces (${faceData.length})`}
+        </div>
+      </div>
+      <div className={`col`}>
+        <div className={` ${style.timeline}`}>
           {faceData.map((face, index) => (
             <div
               key={index}
@@ -27,8 +30,9 @@ const TimeLine = ({ faceData, videoLength, onTimestampClick }) => {
             </div>
           ))}
         </div>
-
       </div>
+
+      {/* </div> */}
     </>
   );
 };
