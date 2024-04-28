@@ -6,9 +6,13 @@ import styles from './Combined.module.css'
 import Header from "../Header/Header";
 import TableLoader from "../table_placeholder_loader/TableLoader";
 import ComparisonTable from "../Comparison/ComparisonTable";
-import { useState } from "react";
+import VideoPlayer from "../Combo/VideoPlayer/VideoPlayer";
+import { useRef, useState } from "react";
+import UploadBtn from "../UploadButton/UploadBtn";
 
 const Combined = () => {
+    const videoRef = useRef(null);
+    const [VideoSrc, setVideoSrc] = useState(null);
     const [showEmoji, setShowEmoji] = useState(false);
     const [emojiClicked, setEmojiClicked] = useState(false);
     return (
@@ -18,9 +22,9 @@ const Combined = () => {
                 <div style={{ position: "relative" }} className="row">
                     <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Video</h1>
-                        <IFrameVideo fileType='video' />
-                        {showEmoji && <EmojiPicker setShowEmoji={setShowEmoji} setEmojiClicked={setEmojiClicked} />}
-                        {emojiClicked && <People />}
+                        <IFrameVideo />
+                        <EmojiPicker />
+                        <People />
                     </div>
                     <div className={`d-none d-lg-block ${styles.verticalLine}`}></div>
                     <div className={` col-12 d-md-none ${styles.horizontalLine}`}></div>
