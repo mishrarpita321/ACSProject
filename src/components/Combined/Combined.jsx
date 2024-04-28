@@ -6,6 +6,7 @@ import styles from './Combined.module.css'
 import Header from "../Header/Header";
 import TableLoader from "../table_placeholder_loader/TableLoader";
 import ComparisonTable from "../Comparison/ComparisonTable";
+import { useState } from "react";
 
 const Combined = () => {
     return (
@@ -15,7 +16,7 @@ const Combined = () => {
                 <div style={{ position: "relative" }} className="row">
                     <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Video</h1>
-                        <IFrameVideo />
+                        <IFrameVideo fileType='video' />
                         <EmojiPicker />
                         <People />
                     </div>
@@ -23,7 +24,7 @@ const Combined = () => {
                     <div className={` col-12 d-md-none ${styles.horizontalLine}`}></div>
                     <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Image</h1>
-                        <IFrame />
+                        <IFrame fileType='image' />
                         <EmojiPicker />
                         <People />
                     </div>

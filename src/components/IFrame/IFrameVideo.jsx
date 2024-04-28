@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import UploadBtn from "../UploadButton/UploadBtn";
 import styles from './IFrame.module.css';
 
-const IFrameVideo = () => {
+const IFrameVideo = ({fileType}) => {
     const [fileSrc, setFileSrc] = useState(null);
-
     return (
         <>
             <div className={styles.iframeContainer}>
@@ -19,7 +18,7 @@ const IFrameVideo = () => {
                     }}
                 />
             </div>
-            <UploadBtn setFileSrc={setFileSrc} />
+            <UploadBtn setFileSrc={setFileSrc} fileType={fileType} /> 
         </>
     );
 };

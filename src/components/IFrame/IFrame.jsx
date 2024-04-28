@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import UploadBtn from "../UploadButton/UploadBtn";
 import styles from './IFrame.module.css';
 
-const IFrame = () => {
+const IFrame = ({fileType}) => {
     const [fileSrc, setFileSrc] = useState(null);
-
     return (
         <>
             <div className={styles.iframeContainer}> {/* Responsive container */}
@@ -15,7 +14,7 @@ const IFrame = () => {
                     className={styles.iframe}
                 />
             </div>
-            <UploadBtn setFileSrc={setFileSrc} />
+            <UploadBtn setFileSrc={setFileSrc} fileType={fileType} />
         </>
     );
 };
