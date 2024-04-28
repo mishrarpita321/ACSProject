@@ -9,6 +9,8 @@ import ComparisonTable from "../Comparison/ComparisonTable";
 import { useState } from "react";
 
 const Combined = () => {
+    const [showEmoji, setShowEmoji] = useState(false);
+    const [emojiClicked, setEmojiClicked] = useState(false);
     return (
         <>
             <Header title="Vision API vs. Video Intelligence API" />
@@ -17,15 +19,15 @@ const Combined = () => {
                     <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Video</h1>
                         <IFrameVideo fileType='video' />
-                        <EmojiPicker />
-                        <People />
+                        {showEmoji && <EmojiPicker setShowEmoji={setShowEmoji} setEmojiClicked={setEmojiClicked} />}
+                        {emojiClicked && <People />}
                     </div>
                     <div className={`d-none d-lg-block ${styles.verticalLine}`}></div>
                     <div className={` col-12 d-md-none ${styles.horizontalLine}`}></div>
                     <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Image</h1>
                         <IFrame fileType='image' />
-                        <EmojiPicker />
+                        <EmojiPicker setShowEmoji={setShowEmoji} setEmojiClicked={setEmojiClicked} />
                         <People />
                     </div>
                 </div>
