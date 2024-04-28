@@ -4,6 +4,10 @@ import IFrameVideoCombined from "../IFrame/IFrameVideoCombined";
 import UploadBtn from "../UploadButton/UploadBtn";
 import style from "./Page2.module.css";
 import ComboFaceContainer from "../Combo/ComboFaceContainer/ComboFaceContainer";
+import { useState } from "react";
+import { Tooltip } from "../Combo/TimeLine/Tooltip";
+import TimeLine from "../Combo/TimeLine/TimeLine";
+import VideoPlayer from "../Combo/VideoPlayer/VideoPlayer";
 
 const data = {
     "data": [
@@ -12,135 +16,135 @@ const data = {
             "faces": [
                 {
                     "id": 1,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
-                    "time": "00:00:00",
-                    "features":[
+                    "image": "https://img.icons8.com/color/150/000000/happy.png",
+                    "time": "00:00:10",
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
                 },
                 {
                     "id": 2,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
-                    "time": "00:00:00",
-                    "features":[
+                    "image": "https://img.icons8.com/color/150/000000/happy.png",
+                    "time": "00:00:30",
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
                 },
                 {
                     "id": 3,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/happy.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
                 },
                 {
                     "id": 4,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/happy.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
                 },
                 {
                     "id": 50,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/happy.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
@@ -152,108 +156,108 @@ const data = {
             "faces": [
                 {
                     "id": 5,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/sad.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
                 },
                 {
                     "id": 6,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/sad.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
                 },
                 {
                     "id": 7,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/sad.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
                 },
                 {
                     "id": 8,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/sad.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
@@ -265,108 +269,108 @@ const data = {
             "faces": [
                 {
                     "id": 9,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/angry.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
                 },
                 {
                     "id": 10,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/angry.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
                 },
                 {
                     "id": 11,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/angry.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
                 },
                 {
                     "id": 12,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/angry.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
@@ -378,108 +382,108 @@ const data = {
             "faces": [
                 {
                     "id": 13,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/surprised.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
                 },
                 {
                     "id": 14,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/surprised.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
                 },
                 {
                     "id": 15,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/surprised.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
                 },
                 {
                     "id": 16,
-                    "image": "https://img.icons8.com/color/150/000000/google-logo.png",
+                    "image": "https://img.icons8.com/color/150/000000/surprised.png",
                     "time": "00:00:00",
-                    "features":[
+                    "features": [
                         {
-                            "feature":"glasses",
+                            "feature": "glasses",
                             "percentage": "3",
                         },
                         {
-                            "feature":"smiling",
+                            "feature": "smiling",
                             "percentage": "10",
                         },
                         {
-                            "feature":"looking at camera",
+                            "feature": "looking at camera",
                             "percentage": "30",
                         },
                         {
-                            "feature":"eyes visible",
+                            "feature": "eyes visible",
                             "percentage": "40",
                         },
                         {
-                            "feature":"mouth open",
+                            "feature": "mouth open",
                             "percentage": "50",
                         }
                     ]
@@ -489,15 +493,48 @@ const data = {
     ]
 }
 
-const Page2 = () => {
+const transformDataToFaceData = (data) => {
+    return data.data.flatMap((sentimentData) => 
+      sentimentData.faces.map((face) => ({
+        time: face.time,
+        image: face.image
+      }))
+    );
+  };
 
+const Page2 = () => {
+    const [videoLength, setVideoLength] = useState(null); // initially no video length
+    const [currentVideoTime, setCurrentVideoTime] = useState('00:00:00');
+
+    const handleMetadata = (e) => {
+        setVideoLength(e.target.duration);
+    };
+
+
+    const handleTimestampClick = (time) => {
+        // Logic to seek the video to the clicked timestamp
+    };
+
+
+    const faceData =  transformDataToFaceData(data);
+
+    // Total length of the video in seconds
+    // const videoLength = 3600; // for example, 1 hour
     return (
         <>
             <Header title="title of page 2" />
             <div className={`container`}>
                 <div className="row">
                     <div className="col-12 col-md-6">
-                        <IFrameVideoCombined />
+                        {/* <IFrameVideoCombined /> */}
+                        <div>
+                            <VideoPlayer
+                                src="./face_dec.mp4"
+                                onLoadedMetadata={handleMetadata}
+                                onTimeUpdate={(e) => setCurrentVideoTime(e.target.currentTime)}
+                            />
+
+                        </div>
                     </div>
                     <div className={`col-12 col-md-6 d-flex flex-column justify-content-between`} >
                         {/* <div className={{col}}> */}
@@ -511,6 +548,13 @@ const Page2 = () => {
                             <UploadBtn widthInPercentage="100%" />
                         </div>
                     </div>
+                </div>
+                <div>
+                    <TimeLine
+                        faceData={faceData}
+                        videoLength={videoLength}
+                        onTimestampClick={handleTimestampClick}
+                    />
                 </div>
                 <div className="row">
                     <ComboFaceContainer data={data} />
