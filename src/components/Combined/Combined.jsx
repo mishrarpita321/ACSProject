@@ -12,7 +12,15 @@ import UploadBtn from "../UploadButton/UploadBtn";
 
 const Combined = () => {
     const videoRef = useRef(null);
-    const [VideoSrc, setVideoSrc] = useState(null);
+    const [videoSrc, setVideoSrc] = useState(null);
+    const [imageSrc, setImageSrc] = useState(null);
+    const [showEmojiVideo, setShowEmojiVideo] = useState(false);
+    const [showEmojiImage, setShowEmojiImage] = useState(false);
+    const [visionData, setVisionData] = useState([]);
+    const [filteredVisionData, setVisiontFilteredData] = useState(null);
+    const [visionEmojiClicked, setVisionEmojiClicked] = useState(false);
+    const [videoEmojiClicked, setVideoEmojiClicked] = useState(false);
+    
     return (
         <>
             <Header title="Vision API vs. Video Intelligence API" />
@@ -22,29 +30,28 @@ const Combined = () => {
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Video</h1>
                         {/* <IFrameVideo /> */}
                         <VideoPlayer
-                            src={VideoSrc}
+                            src={videoSrc}
                             onLoadedMetadata={() => { }}
                             onTimeUpdate={(e) => setCurrentVideoTime(e.target.currentTime)}
                             videoRef={videoRef}
                         />
-                        <UploadBtn setFileSrc={setVideoSrc} />
-                        <EmojiPicker />
-                        <People />
-                    </div>
+                        <UploadBtn setFileSrc={setVideoSrc} fileType="video"/>
+                        {showEmojiVideo && <EmojiPicker setEmojiClicked={setEmojiClicked} />}
+                        {videoEmojiClicked && <People />}
+                   </div>
                     <div className={`d-none d-lg-block ${styles.verticalLine}`}></div>
                     <div className={` col-12 d-md-none ${styles.horizontalLine}`}></div>
                     <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Image</h1>
-                        <IFrame />
-                        <EmojiPicker />
-                        <People />
+                        <IFrame imageSrc={imageSrc}/>
+                        <UploadBtn setFileSrc={setImageSrc} fileType="image" setShowEmoji={setShowEmojiImage} setVisionData={setVisionData} />
+                        {showEmojiImage && <EmojiPicker visionData={visionData} setFilteredData={setVisiontFilteredData} setEmojiClicked={setVisionEmojiClicked} />}
+                        {visionEmojiClicked && <People filteredVisionData={filteredVisionData} />}
                     </div>
                 </div>
 
 
-
                 {/* implementation is remaning */}
-
                 {/* 
                 <div style={{marginTop:`50px`}} className="row">
                     <TableLoader />
