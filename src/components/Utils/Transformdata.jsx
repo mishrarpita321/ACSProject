@@ -13,8 +13,8 @@ function transformApiResponse(response) {
             const emotionLabel = emotion.charAt(0).toUpperCase() + emotion.slice(1);
 
             // Collect images in the specified format
-            const faces = images.map(img => ({
-                faceid: 'sdf', // Placeholder value; replace or generate as needed
+            const faces = images.map((img,i) => ({
+                faceid: i+1, // Placeholder value; replace or generate as needed
                 img: img
             }));
 

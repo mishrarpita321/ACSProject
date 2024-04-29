@@ -98,7 +98,7 @@ const data = {
                 {
                     "id": 4,
                     "image": "https://img.icons8.com/color/150/000000/happy.png",
-                    "time": "00:00:40",
+                    "time": "00:00:33",
                     "features": [
                         {
                             "feature": "glasses",

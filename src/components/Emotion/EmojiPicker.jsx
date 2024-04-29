@@ -6,7 +6,7 @@ const EmojiPicker = ({setShowEmoji, setEmojiClicked}) => {
     const [selectedEmoji, setSelectedEmoji] = useState(null);
 
     setShowEmoji(false); //This will be set to true on successful data fetching
-    setEmojiClicked(true); //This will be set to true on click of an emoji. Based on this state, the People component will be rendered in combined component
+    setEmojiClicked(false); //This will be set to true on click of an emoji. Based on this state, the People component will be rendered in combined component
 
     const emojis = [
         { id: 'smile', symbol: '😀', label: 'Smile' },
