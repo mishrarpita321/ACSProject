@@ -1,8 +1,8 @@
 import ComboFaceBar from '../ComboFaceBar/ComboFaceBar';
 import style from './ComboFaceContainer.module.css';
 
-const ComboFaceContainer = ({ data }) => {
-    console.log(data);
+const ComboFaceContainer = ({ data, onTimeFaceClick }) => {
+    // console.log(data);
     return (
         <>
             {
@@ -16,7 +16,7 @@ const ComboFaceContainer = ({ data }) => {
                                 {
                                     item.faces.map((face, index) => {
                                         return (
-                                            <div className={`d-flex ${style.comboFaceCard}`} key={index}>
+                                            <div onClick={()=>onTimeFaceClick(face.time)} title={face.time} className={`d-flex ${style.comboFaceCard}`} key={index}>
                                                 <div className='d-flex justify-content-center'>
                                                     <img style={{ height: '60px', background: '#000000' }} src={face.image} alt="face" />
                                                 </div>
