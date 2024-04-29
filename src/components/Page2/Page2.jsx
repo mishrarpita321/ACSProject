@@ -5,7 +5,7 @@ import UploadBtn from "../UploadButton/UploadBtn";
 import style from "./Page2.module.css";
 import ComboFaceContainer from "../Combo/ComboFaceContainer/ComboFaceContainer";
 import { useRef, useState } from "react";
-import { Tooltip } from "../Combo/TimeLine/Tooltip";
+// import { Tooltip } from "../Combo/TimeLine/Tooltip";
 import TimeLine from "../Combo/TimeLine/TimeLine";
 import VideoPlayer from "../Combo/VideoPlayer/VideoPlayer";
 
@@ -513,6 +513,7 @@ const Page2 = () => {
 
 
     const handleTimestampClick = (time) => {
+        console.log(time);
         const parts = time.split(':');
         const seconds = parseInt(parts[0]) * 3600 + parseInt(parts[1]) * 60 + parseInt(parts[2]);
         
@@ -563,7 +564,7 @@ const Page2 = () => {
                     />
                 </div>
                 <div className="row">
-                    <ComboFaceContainer data={data} />
+                    <ComboFaceContainer data={data} onTimeFaceClick={handleTimestampClick} />
                 </div>
             </div>
 
