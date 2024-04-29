@@ -1,42 +1,49 @@
 import React, { useState } from 'react';
 import styles from './EmojiPicker.module.css'; // Make sure this points to the right file
-import transformApiResponse from '../Utils/Transformdata';
+import { useEffect } from 'react';
 
-const EmojiPicker = ({setShowEmoji, setEmojiClicked}) => {
+const EmojiPicker = ({visionData, setFilteredData, setEmojiClicked}) => {
     const [selectedEmoji, setSelectedEmoji] = useState(null);
+    const [emojis, setEmojis] = useState([]);
 
-    setShowEmoji(false); //This will be set to true on successful data fetching
-    setEmojiClicked(false); //This will be set to true on click of an emoji. Based on this state, the People component will be rendered in combined component
+    useEffect(() => {
+        if (visionData && visionData.data) {
+            const uniqueEmos = visionData.data
+                .map(item => item.emo)
+                .filter((value, index, self) => self.indexOf(value) === index); // Remove duplicates
+            
+            const emojiOptions = uniqueEmos.map(emo => ({
+                id: emo,
+                symbol: getEmojiSymbol(emo),
+                label: emo
+            }));
+            setEmojis(emojiOptions);
+        }
+    }, [visionData]);
 
-    const emojis = [
-        { id: 'smile', symbol: '😀', label: 'Smile' },
-        { id: 'angry', symbol: '😡', label: 'Angry' },
-        { id: 'sad', symbol: '😢', label: 'Sad' },
-        { id: 'joyful', symbol: '😂', label: 'Joyful' }
-    ];
+    const getEmojiSymbol = (emo) => {
+        switch (emo) {
+            case 'Surprise':
+                return '😀';
+            case 'Anger':
+                return '😡';
+            case 'Sorrow':
+                return '😢';
+            case 'Joyful':
+                return '😂';
+            default:
+                return '❓';
+        }
+    };
 
     const handleEmojiClick = (emojiId) => {
+        setEmojiClicked(true); //it shows the people component
         setSelectedEmoji(emojiId);
-    };
-
-    const apiResponse = {
-        "timeTaken": "2sec",
-        "joyful": [
-            "https://res.cloudinary.com/demo/image/upload/c_thumb,g_face,h_200,w_200/r_max/f_auto/woman-blackdress-stairs.png"
-        ],
-        "anger": [
-            "https://res.cloudinary.com/demo/image/upload/leather_bag_gray.jpg"
-        ],
-        "sorrow": [
-            "https://res.cloudinary.com/demo/image/upload/ar_1.0,c_thumb,g_face,w_0.7/r_max/co_skyblue,e_outline/co_lightgray,e_shadow,x_5,y_8/docs/blue_sweater_model.png"
-        ],
-        "surprise": [
-            "https://res.cloudinary.com/demo/image/upload/water-park-aerial-view.jpg",
-            "https://res.cloudinary.com/demo/image/upload/v1699883548/water-park-aerial-view.jpg"
-        ]
-    };
-
-    console.log(transformApiResponse(apiResponse));
+        const data = visionData.data.filter(item => {
+            return item.emo === emojiId;
+        });
+        setFilteredData(data);
+    };    
 
     return (
         <div className={styles.emojiContainer}>
