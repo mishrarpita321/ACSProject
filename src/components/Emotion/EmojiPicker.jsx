@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './EmojiPicker.module.css'; // Make sure this points to the right file
 import { useEffect } from 'react';
 
-const EmojiPicker = ({visionData, setFilteredData, setEmojiClicked}) => {
+const EmojiPicker = ({visionData, setFilteredData, setShowFaces}) => {
     const [selectedEmoji, setSelectedEmoji] = useState(null);
     const [emojis, setEmojis] = useState([]);
 
@@ -37,7 +37,7 @@ const EmojiPicker = ({visionData, setFilteredData, setEmojiClicked}) => {
     };
 
     const handleEmojiClick = (emojiId) => {
-        setEmojiClicked(true); //it shows the people component
+        setShowFaces(true); //it shows the people component
         setSelectedEmoji(emojiId);
         const data = visionData.data.filter(item => {
             return item.emo === emojiId;
