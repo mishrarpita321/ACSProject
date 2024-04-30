@@ -1,5 +1,3 @@
-// WORK IN PROGRESS
-
 function transformApiResponse(response) {
     const transformed = {
         responseTime: response.timeTaken,
@@ -28,25 +26,5 @@ function transformApiResponse(response) {
 
     return transformed;
 }
-
-// Example usage:
-// const apiResponse = {
-//     "timeTaken": "2sec",
-//     "joyful": [
-//         "https://res.cloudinary.com/demo/image/upload/c_thumb,g_face,h_200,w_200/r_max/f_auto/woman-blackdress-stairs.png"
-//     ],
-//     "anger": [
-//         "https://res.cloudinary.com/demo/image/upload/leather_bag_gray.jpg"
-//     ],
-//     "sorrow": [
-//         "https://res.cloudinary.com/demo/image/upload/ar_1.0,c_thumb,g_face,w_0.7/r_max/co_skyblue,e_outline/co_lightgray,e_shadow,x_5,y_8/docs/blue_sweater_model.png"
-//     ],
-//     "surprise": [
-//         "https://res.cloudinary.com/demo/image/upload/water-park-aerial-view.jpg",
-//         "https://res.cloudinary.com/demo/image/upload/v1699883548/water-park-aerial-view.jpg"
-//     ]
-// };
-
-// console.log(transformApiResponse(apiResponse));
 
 export default transformApiResponse;

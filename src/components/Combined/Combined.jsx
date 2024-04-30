@@ -9,6 +9,7 @@ import ComparisonTable from "../Comparison/ComparisonTable";
 import VideoPlayer from "../Combo/VideoPlayer/VideoPlayer";
 import { useRef, useState } from "react";
 import UploadBtn from "../UploadButton/UploadBtn";
+import Loader from "../Loader/Loader";
 
 const Combined = () => {
     const videoRef = useRef(null);
@@ -20,6 +21,7 @@ const Combined = () => {
     const [filteredVisionData, setVisiontFilteredData] = useState(null);
     const [visionEmojiClicked, setVisionEmojiClicked] = useState(false);
     const [videoEmojiClicked, setVideoEmojiClicked] = useState(false);
+    const [showLoader, setShowLoader] = useState(false);
     
     return (
         <>
@@ -36,7 +38,7 @@ const Combined = () => {
                             videoRef={videoRef}
                         />
                         <UploadBtn setFileSrc={setVideoSrc} fileType="video"/>
-                        {showEmojiVideo && <EmojiPicker setEmojiClicked={setEmojiClicked} />}
+                        {showEmojiVideo && <EmojiPicker />}
                         {videoEmojiClicked && <People />}
                    </div>
                     <div className={`d-none d-lg-block ${styles.verticalLine}`}></div>
@@ -44,8 +46,9 @@ const Combined = () => {
                     <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Image</h1>
                         <IFrame imageSrc={imageSrc}/>
-                        <UploadBtn setFileSrc={setImageSrc} fileType="image" setShowEmoji={setShowEmojiImage} setVisionData={setVisionData} />
-                        {showEmojiImage && <EmojiPicker visionData={visionData} setFilteredData={setVisiontFilteredData} setEmojiClicked={setVisionEmojiClicked} />}
+                        <UploadBtn setFileSrc={setImageSrc} fileType="image" setShowEmoji={setShowEmojiImage} setVisionData={setVisionData} setShowLoader={setShowLoader} />
+                        {showLoader && <Loader />}
+                        {showEmojiImage && <EmojiPicker visionData={visionData} setFilteredData={setVisiontFilteredData} setShowFaces={setVisionEmojiClicked} />}
                         {visionEmojiClicked && <People filteredVisionData={filteredVisionData} />}
                     </div>
                 </div>
