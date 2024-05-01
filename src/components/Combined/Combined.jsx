@@ -10,18 +10,21 @@ import VideoPlayer from "../Combo/VideoPlayer/VideoPlayer";
 import { useRef, useState } from "react";
 import UploadBtn from "../UploadButton/UploadBtn";
 import Loader from "../Loader/Loader";
+import PeopleVideo from "../People/PeopleVideo";
+import ShowResponseTime from "../ShowResponseTime/ShowResponseTime";
 
 const Combined = () => {
     const videoRef = useRef(null);
     const [videoSrc, setVideoSrc] = useState(null);
     const [imageSrc, setImageSrc] = useState(null);
-    const [showEmojiVideo, setShowEmojiVideo] = useState(false);
     const [showEmojiImage, setShowEmojiImage] = useState(false);
+    const [showPeopleVideo, setShowPeopleVideo] = useState(false);
     const [visionData, setVisionData] = useState([]);
+    const [videoData, setVideoData] = useState([]);
     const [filteredVisionData, setVisiontFilteredData] = useState(null);
     const [visionEmojiClicked, setVisionEmojiClicked] = useState(false);
-    const [videoEmojiClicked, setVideoEmojiClicked] = useState(false);
-    const [showLoader, setShowLoader] = useState(false);
+    const [showLoaderVision, setShowLoaderVision] = useState(false);
+    const [showLoaderVideo, setShowLoaderVideo] = useState(false);
     
     return (
         <>
@@ -30,24 +33,26 @@ const Combined = () => {
                 <div style={{ position: "relative" }} className="row">
                     <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Video</h1>
-                        {/* <IFrameVideo /> */}
                         <VideoPlayer
                             src={videoSrc}
                             onLoadedMetadata={() => { }}
                             onTimeUpdate={(e) => setCurrentVideoTime(e.target.currentTime)}
                             videoRef={videoRef}
                         />
-                        <UploadBtn setFileSrc={setVideoSrc} fileType="video"/>
-                        {showEmojiVideo && <EmojiPicker />}
-                        {videoEmojiClicked && <People />}
+                        {/* the margintop gap needs to be analysed, gap is more than vision */}
+                        {showPeopleVideo && <ShowResponseTime respTime={videoData} fileType='video' />} 
+                        <UploadBtn setFileSrc={setVideoSrc} fileType="video" setShowLoader={setShowLoaderVideo} setVideoData={setVideoData} setShowFaces={setShowPeopleVideo} />
+                        {showLoaderVideo && <Loader />}
+                        {showPeopleVideo && <PeopleVideo videoData={videoData} fileType="video" />}
                    </div>
                     <div className={`d-none d-lg-block ${styles.verticalLine}`}></div>
                     <div className={` col-12 d-md-none ${styles.horizontalLine}`}></div>
                     <div className={`col-12 col-md-6 ${styles.iFrameContainer}`}>
                         <h1 style={{ color: '#8e62a0', fontFamily: 'sans-serif' }}>Upload Image</h1>
-                        <IFrame imageSrc={imageSrc}/>
-                        <UploadBtn setFileSrc={setImageSrc} fileType="image" setShowEmoji={setShowEmojiImage} setVisionData={setVisionData} setShowLoader={setShowLoader} />
-                        {showLoader && <Loader />}
+                        <IFrame imageSrc={imageSrc} />
+                        {showEmojiImage && <ShowResponseTime respTime={visionData} />}
+                        <UploadBtn setFileSrc={setImageSrc} fileType="image" setShowEmoji={setShowEmojiImage} setVisionData={setVisionData} setShowLoader={setShowLoaderVision} />
+                        {showLoaderVision && <Loader />}
                         {showEmojiImage && <EmojiPicker visionData={visionData} setFilteredData={setVisiontFilteredData} setShowFaces={setVisionEmojiClicked} />}
                         {visionEmojiClicked && <People filteredVisionData={filteredVisionData} />}
                     </div>
