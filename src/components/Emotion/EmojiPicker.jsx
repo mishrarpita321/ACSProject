@@ -1,19 +1,49 @@
 import React, { useState } from 'react';
 import styles from './EmojiPicker.module.css'; // Make sure this points to the right file
+import { useEffect } from 'react';
 
-const EmojiPicker = () => {
+const EmojiPicker = ({visionData, setFilteredData, setShowFaces}) => {
     const [selectedEmoji, setSelectedEmoji] = useState(null);
+    const [emojis, setEmojis] = useState([]);
 
-    const emojis = [
-        { id: 'smile', symbol: '😀', label: 'Smile' },
-        { id: 'angry', symbol: '😡', label: 'Angry' },
-        { id: 'sad', symbol: '😢', label: 'Sad' },
-        { id: 'joyful', symbol: '😂', label: 'Joyful' }
-    ];
+    useEffect(() => {
+        if (visionData && visionData.data) {
+            const uniqueEmos = visionData.data
+                .map(item => item.emo)
+                .filter((value, index, self) => self.indexOf(value) === index); // Remove duplicates
+            
+            const emojiOptions = uniqueEmos.map(emo => ({
+                id: emo,
+                symbol: getEmojiSymbol(emo),
+                label: emo
+            }));
+            setEmojis(emojiOptions);
+        }
+    }, [visionData]);
+
+    const getEmojiSymbol = (emo) => {
+        switch (emo) {
+            case 'Surprise':
+                return '😀';
+            case 'Anger':
+                return '😡';
+            case 'Sorrow':
+                return '😢';
+            case 'Joyful':
+                return '😂';
+            default:
+                return '❓';
+        }
+    };
 
     const handleEmojiClick = (emojiId) => {
+        setShowFaces(true); //it shows the people component
         setSelectedEmoji(emojiId);
-    };
+        const data = visionData.data.filter(item => {
+            return item.emo === emojiId;
+        });
+        setFilteredData(data);
+    };    
 
     return (
         <div className={styles.emojiContainer}>

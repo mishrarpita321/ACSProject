@@ -1,20 +1,32 @@
 import React from 'react';
 import styles from './People.module.css';
 
-const People = () => {
-  const people = [
-    'Nachweis_Passfoto.jpg',
-    'Nachweis_Passfoto.jpg',
-    'Nachweis_Passfoto.jpg'
-  ];
-
-  return (
+const People = ({ filteredVisionData }) => {
+  console.log(filteredVisionData[0].faces);
+  const arrLen = filteredVisionData[0].faces ? filteredVisionData[0].faces.length : 0;
+  
+  return (    
     <div className={styles.people}>
-      {people.map((person, index) => (
-        <div key={index} className={styles.imgcontainer}>
-          <img src={person} alt={`Person ${index + 1}`} className={styles.image} />
+      {arrLen ? (
+        filteredVisionData[0].faces.map((face, idx) => (
+          <div key={idx} className={styles.imgcontainer}>
+            <img
+              key={face.id}
+              src={face.img}
+              alt={`Person ${idx + 1}`}
+              className={styles.image}
+            />
+          </div>
+        ))) : (
+        <div className={styles.imgcontainer}>
+          <img
+            src="https://via.placeholder.com/150"
+            alt="Person"
+            className={styles.image}
+          />
         </div>
-      ))}
+      )}
+
     </div>
   );
 };
