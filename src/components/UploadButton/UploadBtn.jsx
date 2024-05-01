@@ -10,53 +10,24 @@ const UploadBtn = ({ widthInPercentage = "60%", setFileSrc, setShowEmoji, fileTy
             const url = URL.createObjectURL(file);
             setFileSrc(url);
             const formData = new FormData();
-            formData.append('image', file);
             // Pending: on reupload old data should be removed
 
             if (fileType === 'video') {
-                // setShowLoader(true);
-                // const response = await axios.post('http://localhost:3000/upload', formData, {
-                //     headers: {
-                //         'Content-Type': 'multipart/form-data'
-                //     },
-                // });
-                // const visionData = transformApiResponse(response.data);
-                // if (response.status === 200) {
-                //     setVideoData(visionData);
-                //     setShowLoader(false);
-                // }
-                setShowFaces(true);
-                setVideoData([{
-                    "responseTime": "2 seconds",
-                    "data": 
-                      {
-                        "emo": "smiling",
-                        "faces": [
-                          {
-                            "faceid": "sdf",
-                            "img": "https://via.placeholder.com/150",
-                            "timestamp": "2s"
-                          },
-                          {
-                            "faceid": "sdf",
-                            "img": "https://via.placeholder.com/150",
-                            "timestamp": "2sec"
-                          },
-                          {
-                            "faceid": "sdf",
-                            "img": "https://via.placeholder.com/150",
-                            "timestamp": "2sec"
-                          },
-                          {
-                            "faceid": "sdf",
-                            "img": "https://via.placeholder.com/150",
-                            "timestamp": "2sec"
-                          }
-                        ]
-                      }
-                  }]);
+                setShowLoader(true);
+                formData.append('video', file);
+                const response = await axios.post('https://acs-example1.ey.r.appspot.com/api/videointelligence', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    },
+                });
+                if (response.status === 200) {
+                    setVideoData(response.data);
+                    setShowLoader(false);
+                    setShowFaces(true);
+                }
             } else {
                 setShowLoader(true);
+                formData.append('image', file);
                 try {
                     const response = await axios.post('http://localhost:3000/upload', formData, {
                         headers: {
