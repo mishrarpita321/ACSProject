@@ -1,15 +1,16 @@
 import styles from './People.module.css';
 
 const PeopleVideo = ({ videoData }) => {
-    const arrLen = videoData[0].data.faces ? videoData[0].data.faces.length : 0;
+    const smilingData = videoData.data.find(item => item.attributes === 'smiling');
+    const arrLen = smilingData.faces ? smilingData.faces.length : 0;
 
     return (
         <div className={styles.people}>
             {arrLen ? (
-                videoData[0].data.faces.map((face, idx) => (
-                    <div key={idx} className={styles.imgcontainer}>
+                smilingData.faces.map((face, idx) => (
+                    <div key={idx} className={styles.imgcontainer} title={face.confidence}>
                         <img
-                            key={face.id}
+                            key={face.faceId}
                             src={face.img}
                             alt={`Person ${idx + 1}`}
                             className={styles.image}

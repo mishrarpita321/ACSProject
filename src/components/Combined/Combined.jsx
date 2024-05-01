@@ -36,11 +36,11 @@ const Combined = () => {
                         <VideoPlayer
                             src={videoSrc}
                             onLoadedMetadata={() => { }}
-                            onTimeUpdate={(e) => setCurrentVideoTime(e.target.currentTime)}
+                            // onTimeUpdate={(e) => setCurrentVideoTime(e.target.currentTime)}
                             videoRef={videoRef}
                         />
                         {/* the margintop gap needs to be analysed, gap is more than vision */}
-                        {showPeopleVideo && <ShowResponseTime respTime={videoData} fileType='video' />} 
+                        {showPeopleVideo && <ShowResponseTime respTime={videoData} />} 
                         <UploadBtn setFileSrc={setVideoSrc} fileType="video" setShowLoader={setShowLoaderVideo} setVideoData={setVideoData} setShowFaces={setShowPeopleVideo} />
                         {showLoaderVideo && <Loader />}
                         {showPeopleVideo && <PeopleVideo videoData={videoData} fileType="video" />}
