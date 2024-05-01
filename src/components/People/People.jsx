@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './People.module.css';
 
 const People = ({ filteredVisionData }) => {
-  console.log(filteredVisionData[0].faces);
   const arrLen = filteredVisionData[0].faces ? filteredVisionData[0].faces.length : 0;
   
   return (    
@@ -26,7 +25,6 @@ const People = ({ filteredVisionData }) => {
           />
         </div>
       )}
-
     </div>
   );
 };
