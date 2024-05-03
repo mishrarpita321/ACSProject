@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import styles from './EmojiPicker.module.css'; // Make sure this points to the right file
 import { useEffect } from 'react';
 
-const EmojiPicker = ({visionData, setFilteredData, setShowFaces}) => {
+const EmojiPicker = ({visionData=null, setFilteredData, setShowFaces}) => {
     const [selectedEmoji, setSelectedEmoji] = useState(null);
     const [emojis, setEmojis] = useState([]);
+    const [widthInPercentage, setWidthInPercentage] = useState("60%");
+    const [justifyContent, setJustifyContent] = useState("space-around");
+    const [padding, setPadding] = useState("10px");
 
     useEffect(() => {
         if (visionData && visionData.data) {
@@ -18,6 +21,14 @@ const EmojiPicker = ({visionData, setFilteredData, setShowFaces}) => {
                 label: emo
             }));
             setEmojis(emojiOptions);
+        }else if(visionData === null){
+            setWidthInPercentage("60%");
+            setPadding("33px");
+            setJustifyContent("unset");
+            setEmojis([{ id: 'Joyful', symbol: getEmojiSymbol('Joyful'), label: 'Smiling' }]);
+            setSelectedEmoji('Joyful');
+
+
         }
     }, [visionData]);
 
@@ -37,6 +48,9 @@ const EmojiPicker = ({visionData, setFilteredData, setShowFaces}) => {
     };
 
     const handleEmojiClick = (emojiId) => {
+        if (visionData === null) {
+            return;
+        }
         setShowFaces(true); //it shows the people component
         setSelectedEmoji(emojiId);
         const data = visionData.data.filter(item => {
@@ -46,7 +60,7 @@ const EmojiPicker = ({visionData, setFilteredData, setShowFaces}) => {
     };    
 
     return (
-        <div className={styles.emojiContainer}>
+        <div className={styles.emojiContainer} style={{ '--btnWidth': widthInPercentage, '--justifyContent':justifyContent, '--padding':padding }}>
             {emojis.map((emoji) => (
                 <div
                     key={emoji.id}

@@ -1,11 +1,12 @@
 .loader {
-    width: 50px;
-    margin-top: 30px;
+    width: 33px;
+    /* width: 50px; */
+    /* margin-top: 30px; */
     aspect-ratio: 1;
     border-radius: 50%;
     background: 
-      radial-gradient(farthest-side,#8e62a0 94%,#0000) top/8px 8px no-repeat,
-      conic-gradient(#0000 30%,#8e62a0);
+      radial-gradient(farthest-side,#e3e3e3 94%,#0000) top/8px 8px no-repeat,
+      conic-gradient(#0000 30%,#e3e3e3);
     -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
     animation: l13 1s infinite linear;
   }

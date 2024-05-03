@@ -1,8 +1,9 @@
 import styles from './People.module.css';
 
 const PeopleVideo = ({ videoData }) => {
-    const smilingData = videoData.data.find(item => item.attributes === 'smiling');
-    const arrLen = smilingData.faces ? smilingData.faces.length : 0;
+    console.log('videoData', videoData);
+    const smilingData = (videoData.length != 0 ? (videoData.data.find(item => item.attributes === 'smiling')) : null);
+    const arrLen = smilingData?.faces ? smilingData.faces.length : 0;
 
     return (
         <div className={styles.people}>

@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import styles from './UploadBtn.module.css';
 import axios from 'axios';
 import transformApiResponse from '../Utils/Transformdata';
+import Loader from '../Loader/Loader';
 
-const UploadBtn = ({ widthInPercentage = "60%", setFileSrc, setShowEmoji, fileType, setVisionData, setShowLoader, setVideoData, setShowFaces }) => {
+const UploadBtn = ({ widthInPercentage = "60%", setFileSrc, setShowEmoji, fileType, setVisionData, setShowLoader, showLoader, setVideoData, setShowFaces }) => {
     const handleFileChange = async (e) => {  // Added async keyword here
         const file = e.target.files[0];
         if (file) {
@@ -49,12 +50,30 @@ const UploadBtn = ({ widthInPercentage = "60%", setFileSrc, setShowEmoji, fileTy
 
     return (
         <div className={styles.uploadbtn} style={{ '--btnWidth': widthInPercentage }}>
-            <input
+            {/* <Loader isVisible={showLoader} /> */}
+
+            {showLoader ? (
+                <>
+                    <Loader isVisible={showLoader} />
+                    <div style={{marginLeft:"18px"}}>Please Wait ...</div>
+                </>
+            ) :
+                <input
+                    type="file"
+                    id="file-upload"
+                    onChange={handleFileChange}
+                    accept={fileType === 'video' ? 'video/*' : 'image/png, image/jpeg'}
+                />
+            }
+
+            {/* <input
                 type="file"
                 id="file-upload"
                 onChange={handleFileChange}
                 accept={fileType === 'video' ? 'video/*' : 'image/png, image/jpeg'}
-            />
+            /> */}
+            {/* <Loader /> */}
+
         </div>
     );
 };

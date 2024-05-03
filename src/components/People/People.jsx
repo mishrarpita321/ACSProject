@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './People.module.css';
+import notFound from '../../../public/not_available.png';
 
 const People = ({ filteredVisionData }) => {
   const arrLen = filteredVisionData[0].faces ? filteredVisionData[0].faces.length : 0;
@@ -19,7 +20,8 @@ const People = ({ filteredVisionData }) => {
         ))) : (
         <div className={styles.imgcontainer}>
           <img
-            src="https://via.placeholder.com/150"
+            // src="https://via.placeholder.com/150"
+            src={notFound}
             alt="Person"
             className={styles.image}
           />

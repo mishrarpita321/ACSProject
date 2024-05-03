@@ -1,12 +1,12 @@
 .emojiContainer {
-    width: 60%;
+    width: var(--btnWidth, 60%);
     display: flex;
-    justify-content: space-around;
+    justify-content: var(--justifyContent,"space-around");
     align-items: center;
     background: #f8f9fa;
     border: 1px solid #ddd;
     border-radius: 20px;
-    padding: 10px;
+    padding: var(--padding,10px);
     /* margin: 20px; */
     margin-top: 30px;
     /* margin-bottom: 30px; */
