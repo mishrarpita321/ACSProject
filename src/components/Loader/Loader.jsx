@@ -1,8 +1,8 @@
 import styles from './Loader.module.css';
 
-const Loader = () => {
-    return(
-        <div className={styles.loader}></div>
+const Loader = ({ isVisible = true }) => {
+    return (
+        isVisible && <div className={styles.loader}></div>
     )
 }
 

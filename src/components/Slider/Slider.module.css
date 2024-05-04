@@ -1,0 +1,45 @@
+.sliderContainer {
+    width: 100%;
+    padding: 17px 0 0 0;
+    /* background-color: #f3f3f3; */
+    /* text-align: center; */
+}
+
+.slider {
+    -webkit-appearance: none; /* Override default look in WebKit browsers */
+    width: 80%; /* Slider takes up 80% of the container width */
+    height: 8px; /* Set the height of the slider */
+    border-radius: 5px; /* Rounded corners for the slider */
+    background: #d3d3d3; /* Light grey slider track */
+    outline: none; /* Remove default focus outline */
+    transition: background 0.2s ease-in-out; /* Smooth transition for background color */
+}
+
+.slider:hover {
+    background: #bbb; /* Darker shade when hovered */
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%; /* Circular thumb */
+    background: #8e62a0; /* Green background color */
+    cursor: pointer; /* Cursor appears as pointer */
+    box-shadow: 0 0 2px #000; /* Shadow for better visibility */
+}
+
+.slider::-moz-range-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #8e62a0;
+    cursor: pointer;
+    box-shadow: 0 0 2px #000;
+}
+
+.sliderValue {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #666; /* Dark grey color for the text */
+}

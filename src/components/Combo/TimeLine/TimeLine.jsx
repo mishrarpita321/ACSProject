@@ -4,8 +4,10 @@ import style from './TimeLine.module.css'; // Ensure you have this CSS file with
 // import './Timeline.module.css'; // Ensure you have this CSS file with styles for the timeline and tooltip
 
 const TimeLine = ({ faceData, videoLength, onTimestampClick }) => {
+  console.log('faceData from TimeLine', faceData);
   const calculateLeftPosition = (time) => {
-    const seconds = time.split(':').reduce((acc, time) => (60 * acc) + +time);
+    // const seconds = time.split(':').reduce((acc, time) => (60 * acc) + +time);
+    const seconds = parseFloat(time.replace('sec', ''));
     return (seconds / videoLength) * 100;
   };
 

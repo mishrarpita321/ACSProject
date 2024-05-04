@@ -4,506 +4,36 @@ import IFrameVideoCombined from "../IFrame/IFrameVideoCombined";
 import UploadBtn from "../UploadButton/UploadBtn";
 import style from "./Page2.module.css";
 import ComboFaceContainer from "../Combo/ComboFaceContainer/ComboFaceContainer";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // import { Tooltip } from "../Combo/TimeLine/Tooltip";
 import TimeLine from "../Combo/TimeLine/TimeLine";
 import VideoPlayer from "../Combo/VideoPlayer/VideoPlayer";
 
-const data = {
-    "data": [
-        {
-            "sentiment": "happy",
-            "faces": [
-                {
-                    "id": 1,
-                    "image": "https://img.icons8.com/color/150/000000/happy.png",
-                    "time": "00:00:10",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                },
-                {
-                    "id": 2,
-                    "image": "https://img.icons8.com/color/150/000000/happy.png",
-                    "time": "00:00:30",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                },
-                {
-                    "id": 3,
-                    "image": "https://img.icons8.com/color/150/000000/happy.png",
-                    "time": "00:00:20",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                },
-                {
-                    "id": 4,
-                    "image": "https://img.icons8.com/color/150/000000/happy.png",
-                    "time": "00:00:33",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                },
-                {
-                    "id": 50,
-                    "image": "https://img.icons8.com/color/150/000000/happy.png",
-                    "time": "00:00:00",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "sentiment": "sad",
-            "faces": [
-                {
-                    "id": 5,
-                    "image": "https://img.icons8.com/color/150/000000/sad.png",
-                    "time": "00:00:00",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                },
-                {
-                    "id": 6,
-                    "image": "https://img.icons8.com/color/150/000000/sad.png",
-                    "time": "00:00:00",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                },
-                {
-                    "id": 7,
-                    "image": "https://img.icons8.com/color/150/000000/sad.png",
-                    "time": "00:00:00",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                },
-                {
-                    "id": 8,
-                    "image": "https://img.icons8.com/color/150/000000/sad.png",
-                    "time": "00:00:00",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "sentiment": "angry",
-            "faces": [
-                {
-                    "id": 9,
-                    "image": "https://img.icons8.com/color/150/000000/angry.png",
-                    "time": "00:00:00",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                },
-                {
-                    "id": 10,
-                    "image": "https://img.icons8.com/color/150/000000/angry.png",
-                    "time": "00:00:00",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                },
-                {
-                    "id": 11,
-                    "image": "https://img.icons8.com/color/150/000000/angry.png",
-                    "time": "00:00:00",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                },
-                {
-                    "id": 12,
-                    "image": "https://img.icons8.com/color/150/000000/angry.png",
-                    "time": "00:00:00",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "sentiment": "joyful",
-            "faces": [
-                {
-                    "id": 13,
-                    "image": "https://img.icons8.com/color/150/000000/surprised.png",
-                    "time": "00:00:00",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                },
-                {
-                    "id": 14,
-                    "image": "https://img.icons8.com/color/150/000000/surprised.png",
-                    "time": "00:00:00",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                },
-                {
-                    "id": 15,
-                    "image": "https://img.icons8.com/color/150/000000/surprised.png",
-                    "time": "00:00:00",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                },
-                {
-                    "id": 16,
-                    "image": "https://img.icons8.com/color/150/000000/surprised.png",
-                    "time": "00:00:00",
-                    "features": [
-                        {
-                            "feature": "glasses",
-                            "percentage": "3",
-                        },
-                        {
-                            "feature": "smiling",
-                            "percentage": "10",
-                        },
-                        {
-                            "feature": "looking at camera",
-                            "percentage": "30",
-                        },
-                        {
-                            "feature": "eyes visible",
-                            "percentage": "40",
-                        },
-                        {
-                            "feature": "mouth open",
-                            "percentage": "50",
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-}
+
 
 const transformDataToFaceData = (data) => {
-    return data.data.flatMap((sentimentData) => 
-      sentimentData.faces.map((face) => ({
-        time: face.time,
-        image: face.image
-      }))
+    console.log('data from transformDataToFaceData:', data)
+    return data.data.flatMap((sentimentData) =>
+        sentimentData.faces.map((face) => ({
+            time: face.time,
+            image: face.image
+        }))
     );
-  };
+};
 
 const Page2 = () => {
-    const videoRef = useRef(null); 
+    const [combinedData, setCombinedData] = useState(null);
+    const [faceData, setFaceData] = useState(null);
+    const [showPeopleVideo, setShowPeopleVideo] = useState(false);
+    const [showLoaderVideo, setShowLoaderVideo] = useState(false);
+    const [videoSrc, setVideoSrc] = useState(null);
+
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to the top of the page
+    }, []);
+
+    const videoRef = useRef(null);
     const [videoLength, setVideoLength] = useState(null); // initially no video length
     const [currentVideoTime, setCurrentVideoTime] = useState('00:00:00');
 
@@ -513,10 +43,13 @@ const Page2 = () => {
 
 
     const handleTimestampClick = (time) => {
-        console.log(time);
-        const parts = time.split(':');
-        const seconds = parseInt(parts[0]) * 3600 + parseInt(parts[1]) * 60 + parseInt(parts[2]);
+        console.log('clicked on time',time);
         
+        // const parts = time.split(':');
+        // const seconds = parseInt(parts[0]) * 3600 + parseInt(parts[1]) * 60 + parseInt(parts[2]);
+        const seconds = parseFloat(time.replace('sec', ''));
+        console.log('clicked on time',seconds);
+
         if (videoRef.current) {
             videoRef.current.currentTime = seconds;
             videoRef.current.play();
@@ -524,18 +57,35 @@ const Page2 = () => {
     };
 
 
-    const faceData =  transformDataToFaceData(data);
+
+
+    useEffect(() => {
+
+        if (combinedData) {
+            console.log('RRRRcombined data is:', combinedData);
+            let f = transformDataToFaceData(combinedData);
+            console.log('face data is:', f);
+            setFaceData(f)
+            // setShowPeopleVideo(true);
+        }
+
+    }, [combinedData]);
+
+
+    console.log('combined data is:', combinedData);
+    // const faceData = transformDataToFaceData(data);
+    // console.log('face data is:', faceData);
 
 
     return (
         <>
-            <Header title="title of page 2" />
+            <Header title="Combined Use Case of Vision API and Video Intelligence API" />
             <div className={`container`}>
                 <div className="row">
                     <div className="col-12 col-md-6">
                         <div>
                             <VideoPlayer
-                                src="./face_dec.mp4"
+                                src={videoSrc}
                                 onLoadedMetadata={handleMetadata}
                                 onTimeUpdate={(e) => setCurrentVideoTime(e.target.currentTime)}
                                 videoRef={videoRef}
@@ -552,23 +102,58 @@ const Page2 = () => {
                             </p>
                         </div>
                         <div>
-                            <UploadBtn widthInPercentage="100%" />
+                            <UploadBtn fileType={'combined'} setCombinedData={setCombinedData} setFileSrc={setVideoSrc} setShowFaces={setShowPeopleVideo} setShowLoader={setShowLoaderVideo} showLoader={showLoaderVideo} widthInPercentage="100%" />
                         </div>
                     </div>
                 </div>
-                <div className="row" style={{marginTop:"50px",marginBottom:"15px"}}>
-                    <TimeLine
-                        faceData={faceData}
-                        videoLength={videoLength}
-                        onTimestampClick={handleTimestampClick}
-                    />
-                </div>
-                <div className="row">
-                    <ComboFaceContainer data={data} onTimeFaceClick={handleTimestampClick} />
-                </div>
+                {showPeopleVideo && (
+                    <>
+                        <div className="row" style={{ marginTop: "50px", marginBottom: "15px" }}>
+                            {faceData && faceData.length > 0 && (
+
+                                <TimeLine
+                                    faceData={faceData}
+                                    videoLength={videoLength}
+                                    onTimestampClick={handleTimestampClick}
+                                />
+                            )}
+                        </div>
+                        <div className="row">
+                            <ComboFaceContainer data={combinedData} onTimeFaceClick={handleTimestampClick} />
+                        </div>
+                    </>
+
+                )}
             </div>
 
         </>
     );
 };
 export default Page2;
+
+
+
+
+
+
+
+// Example usage with the actual response object
+// const apiResponse = {
+//     "cannot-detect": [
+//         {
+//             "id": 0,
+//             "currentEmotion": "cannot-detect",
+//             "timestamp": "13.80sec",
+//             "img": "https://storage.googleapis.com/...",
+//             "attributes": [
+//                 {"name": "eyes_visible", "confidence": 0.994},
+//                 // more attributes...
+//             ]
+//         },
+//         // more faces...
+//     ],
+//     // other emotions...
+// };
+
+// const transformed = transformApiResponse(apiResponse);
+// console.log(transformed);
