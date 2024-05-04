@@ -16,18 +16,23 @@ import EmojiPlaceholder from "../Loader/EmojiPickerPlaceHolder/EmojiPlaceholder"
 // import { motion } from 'framer-motion';
 import { motion } from "framer-motion"
 import FloatButton from "../FloatingButton/FloatButton";
+import { useNavigate } from "react-router-dom";
+import Slider from "../Slider/Slider";
 
 
 
 const Combined = () => {
+    const [sliderValueVideo, setSliderValueVideo] = useState(50);
+    const [sliderValueVision, setSliderValueVision] = useState(50);
+
     const videoRef = useRef(null);
     const imagePeopleRef = useRef(null);
     const videoPeopleRef = useRef(null);
 
     const [videoSrc, setVideoSrc] = useState(null);
     const [imageSrc, setImageSrc] = useState(null);
-    const [showEmojiImage, setShowEmojiImage] = useState(true);
-    const [showPeopleVideo, setShowPeopleVideo] = useState(true);
+    const [showEmojiImage, setShowEmojiImage] = useState(false);
+    const [showPeopleVideo, setShowPeopleVideo] = useState(false);
     const [visionData, setVisionData] = useState([]);
     const [videoData, setVideoData] = useState([]);
     const [filteredVisionData, setVisiontFilteredData] = useState(null);
@@ -37,6 +42,12 @@ const Combined = () => {
 
     const [showCompareBtn, setShowCompareBtn] = useState(false);
     const [showExploreMore, setShowExploreMore] = useState(false);
+
+    const navigate = useNavigate();
+
+    const [showTableLoader, setShowTableLoader] = useState(false);
+    const [showSolutionComparison, setShowSolutionComparison] = useState(false);
+    const tableLoaderRef = useRef(null);
 
 
     useEffect(() => {
@@ -69,12 +80,11 @@ const Combined = () => {
 
 
 
-    const [showTableLoader, setShowTableLoader] = useState(false);
-    const [showSolutionComparison, setShowSolutionComparison] = useState(false);
-    const tableLoaderRef = useRef(null);
+
 
 
     const handleCompareClick = () => {
+        setShowCompareBtn(false); // Hide the Compare button
         setShowTableLoader(true); // Show the TableLoader
     };
 
@@ -100,7 +110,7 @@ const Combined = () => {
             const timeoutId = setTimeout(() => {
                 // setShowTableLoader(false); // Hide the TableLoader
                 setShowExploreMore(true); // Show the SolutionComparison
-            }, 2000); // 5000 milliseconds = 5 seconds
+            }, 5000); // 5000 milliseconds = 5 seconds
 
             // Clear timeout if component unmounts or if the state changes before the timeout is reached
             return () => clearTimeout(timeoutId);
@@ -108,13 +118,26 @@ const Combined = () => {
     }, [showSolutionComparison])
 
 
+
+
+
+    const handleVideoSliderChange = (event) => {
+        setSliderValueVideo(event.target.value);
+    };
+    const handleVisionSliderChange = (event) => {
+        setSliderValueVision(event.target.value);
+    };
+
+    // const filteredImages = videoData.filter(image => image.confidence * 100 >= sliderValue);
+    // console.log(videoData);
+
     return (
         <>
-            <Header title="Vision API vs. Video Intelligence API" showCompareBtn={showCompareBtn} setShowCompareBtn={setShowCompareBtn} />
-            <FloatButton title="Compare" onClick={handleCompareClick} isVisible={!showSolutionComparison} />
-            {/* {
-                showSolutionComparison && <FloatButton title="Explore More" onClick={handleCompareClick} isVisible={!showExploreMore} />
-            } */}
+            <Header title="Vision API vs. Video Intelligence API" />
+            <FloatButton title="Compare" onClick={handleCompareClick} isVisible={showCompareBtn} />
+            {
+                showSolutionComparison && <FloatButton title="Explore More" onClick={() => navigate('/combinedservice')} isVisible={showExploreMore} />
+            }
             {/* <FloatButton title="Explore More" onClick={handleCompareClick} isVisible={!showExploreMore} /> */}
             <div className="container">
                 <div style={{ position: "relative" }} className="row">
@@ -134,7 +157,7 @@ const Combined = () => {
                                 animate={{ x: 0 }}  // End at the original position
                                 transition={{ duration: 0.5, type: 'just' }}  // Customize the duration and type of transition
                             >
-                                <ShowResponseTime respTime={videoData} />
+                                <ShowResponseTime data={videoData}  />
                             </motion.div>
                         )}
                         <UploadBtn setFileSrc={setVideoSrc} fileType="video" setShowLoader={setShowLoaderVideo} setVideoData={setVideoData} setShowFaces={setShowPeopleVideo} showLoader={showLoaderVideo} />
@@ -151,6 +174,10 @@ const Combined = () => {
                                     setFilteredData={() => { }}
                                     setShowFaces={() => { }}
                                 />
+                                <Slider
+                                    value={sliderValueVideo}
+                                    onChange={handleVideoSliderChange}
+                                />
                             </motion.div>
 
                         )
@@ -158,7 +185,7 @@ const Combined = () => {
                         {showPeopleVideo && (
                             // visionData && visionData.length > 0 && (
                             <div ref={videoPeopleRef}>
-                                <PeopleVideo videoData={videoData} fileType="video" />
+                                <PeopleVideo videoData={videoData} fileType="video" sliderValue={sliderValueVideo} />
                             </div>
                             // )
                         )}
@@ -174,7 +201,7 @@ const Combined = () => {
                                 animate={{ x: 0 }}  // End at the original position
                                 transition={{ duration: 0.5, type: 'just' }}  // Customize the duration and type of transition
                             >
-                                <ShowResponseTime respTime={visionData} />
+                                <ShowResponseTime data={visionData} />
                             </motion.div>
                         )}
                         <UploadBtn setFileSrc={setImageSrc} fileType="image" setShowEmoji={setShowEmojiImage} setVisionData={setVisionData} setShowLoader={setShowLoaderVision} showLoader={showLoaderVision} />
@@ -191,13 +218,19 @@ const Combined = () => {
                                     setFilteredData={setVisiontFilteredData}
                                     setShowFaces={setVisionEmojiClicked}
                                 />
+                                {visionEmojiClicked &&
+                                    <Slider
+                                        value={sliderValueVision}
+                                        onChange={handleVisionSliderChange}
+                                    />
+                                }
                             </motion.div>
 
                         )
                         }
                         {visionEmojiClicked && (
                             <div ref={imagePeopleRef}>
-                                <People filteredVisionData={filteredVisionData} />
+                                <People filteredVisionData={filteredVisionData} sliderValue={sliderValueVision}/>
                             </div>
                         )}
                     </div>

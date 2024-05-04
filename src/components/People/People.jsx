@@ -2,17 +2,19 @@ import React from 'react';
 import styles from './People.module.css';
 import notFound from '../../../public/not_available.png';
 
-const People = ({ filteredVisionData }) => {
-  const arrLen = filteredVisionData[0].faces ? filteredVisionData[0].faces.length : 0;
-  
+const People = ({ filteredVisionData, sliderValue }) => {
+  console.log('People', filteredVisionData,sliderValue);
+  const confidenceThreshold = sliderValue / 100;
+  const validFaces = filteredVisionData.filter(face => face.detectionConfidence >= confidenceThreshold);
+
   return (    
     <div className={styles.people}>
-      {arrLen ? (
-        filteredVisionData[0].faces.map((face, idx) => (
-          <div key={idx} className={styles.imgcontainer}>
+      {validFaces.length > 0 ? (
+        validFaces.map((face, idx) => (
+          <div title={face.detectionConfidence} key={idx} className={styles.imgcontainer}>
             <img
               key={face.id}
-              src={face.img}
+              src={face.imageUrl}
               alt={`Person ${idx + 1}`}
               className={styles.image}
             />

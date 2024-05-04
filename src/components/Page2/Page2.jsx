@@ -4,7 +4,7 @@ import IFrameVideoCombined from "../IFrame/IFrameVideoCombined";
 import UploadBtn from "../UploadButton/UploadBtn";
 import style from "./Page2.module.css";
 import ComboFaceContainer from "../Combo/ComboFaceContainer/ComboFaceContainer";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // import { Tooltip } from "../Combo/TimeLine/Tooltip";
 import TimeLine from "../Combo/TimeLine/TimeLine";
 import VideoPlayer from "../Combo/VideoPlayer/VideoPlayer";
@@ -503,6 +503,11 @@ const transformDataToFaceData = (data) => {
   };
 
 const Page2 = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to the top of the page
+    }, []);
+
     const videoRef = useRef(null); 
     const [videoLength, setVideoLength] = useState(null); // initially no video length
     const [currentVideoTime, setCurrentVideoTime] = useState('00:00:00');

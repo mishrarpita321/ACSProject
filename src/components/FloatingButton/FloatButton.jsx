@@ -6,7 +6,7 @@ const FloatButton = ({ title = "", onClick = () => { }, isVisible = true }) => {
         <>
             {isVisible && (
                 <div onClick={onClick} className={styles.floating_btn}>
-                    &#x1F50D; Compare
+                    &#x1F50D; {title}
                 </div>
             )}
 
