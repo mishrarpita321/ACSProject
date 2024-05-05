@@ -5,8 +5,8 @@ function transformCombinedApiResponse(response) {
         "looking_at_camera",
         "glasses",
         "headwear",
-        "smiling",
-        "mouth_open"
+        "mouth_open",
+        "smiling"
     ];
     const sentimentOrder = {
         "happy": 1,
@@ -36,7 +36,8 @@ function transformCombinedApiResponse(response) {
                 id: face.id,
                 image: face.img,
                 time: face.timestamp,
-                features: features
+                features: features,
+                visionConfid: (face.visionConfid * 100).toFixed(0)
             };
         });
 

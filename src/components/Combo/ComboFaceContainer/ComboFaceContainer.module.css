@@ -7,6 +7,10 @@
     padding-top: 18px;  /* it (padding) shoould be given differently because of its inherent padding of row */
     padding-bottom: 32px;
 }
+.seperatorTitle{
+    color: #8D62A0;
+    font-weight: 600;
+}
 .sentimentTitle {
     padding: 0.1rem 0;
     width: 236px;
