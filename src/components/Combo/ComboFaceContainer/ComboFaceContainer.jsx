@@ -2,7 +2,7 @@ import ComboFaceBar from '../ComboFaceBar/ComboFaceBar';
 import style from './ComboFaceContainer.module.css';
 
 const ComboFaceContainer = ({ data, onTimeFaceClick }) => {
-    console.log('here in combo',data);
+    console.log('here in combo', data.data);
     return (
         <>
             {
@@ -10,13 +10,13 @@ const ComboFaceContainer = ({ data, onTimeFaceClick }) => {
                     return (
                         <div className={`col-12 col-lg-10 ${style.comboFaceCategory}`} key={index}>
                             <div className={`text-capitalize ${style.sentimentTitle}`}>
-                                {item.sentiment}
+                                {item.sentiment} ({item.faces.length})
                             </div>
                             <div className={`${style.comboFaceListContainer}`}>
                                 {
                                     item.faces.map((face, index) => {
                                         return (
-                                            <div onClick={()=>onTimeFaceClick(face.time)} title={face.time} className={`d-flex ${style.comboFaceCard}`} key={index}>
+                                            <div onClick={() => onTimeFaceClick(face.time)} title={face.time} className={`d-flex ${style.comboFaceCard}`} key={index}>
                                                 <div className='d-flex justify-content-center'>
                                                     <img style={{ height: '60px', background: '#000000' }} src={face.image} alt="face" />
                                                 </div>
@@ -26,7 +26,11 @@ const ComboFaceContainer = ({ data, onTimeFaceClick }) => {
                                                             <ComboFaceBar key={index} Feature={feature.feature} percentage={feature.percentage} colorCode={"#8e62a0"} />
                                                         );
                                                     })
+
                                                 }
+                                                <hr />
+                                                <div className={style.seperatorTitle}>Confidence from Vision API</div>
+                                                <ComboFaceBar Feature={item.sentiment} percentage={face.visionConfid} colorCode={"#8e62a0"} />
                                             </div>
                                         );
                                     })

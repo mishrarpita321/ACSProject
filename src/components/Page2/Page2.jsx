@@ -33,6 +33,8 @@ const Page2 = () => {
         window.scrollTo(0, 0); // Scroll to the top of the page
     }, []);
 
+
+
     const videoRef = useRef(null);
     const [videoLength, setVideoLength] = useState(null); // initially no video length
     const [currentVideoTime, setCurrentVideoTime] = useState('00:00:00');
@@ -44,6 +46,9 @@ const Page2 = () => {
 
     const handleTimestampClick = (time) => {
         console.log('clicked on time',time);
+
+        videoRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
         
         // const parts = time.split(':');
         // const seconds = parseInt(parts[0]) * 3600 + parseInt(parts[1]) * 60 + parseInt(parts[2]);
