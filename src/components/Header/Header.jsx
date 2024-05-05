@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
 import styles from './Header.module.css';
+import { FaHome } from "react-icons/fa";
 
-const Header = ({ title = "", setFileSrc, showCompareBtn = false, setShowCompareBtn =()=>{} }) => {
+const Header = ({title}) => {
+    const handleHomeOnClick = () => {
+        window.location.href = '/';
+    };
     return (
         <>
             <div className={styles.appBar}>
-                {/* <h1 className={styles.appBarTitle}>Vision API vs. Video Intelligence API</h1> */}
+                {/* <FaHome className={styles.homeIcon} /> */}
+                <span className={styles.homeIcon} onClick={handleHomeOnClick}>
+                    <FaHome />
+                </span>
                 <h1 className={styles.appBarTitle}>{title}</h1>
             </div>
-            {/* {showCompareBtn && (
-                <div className={styles.floating_btn}>
-                    &#x1F50D; Compare
-                </div>
-            )} */}
         </>
     );
 };
