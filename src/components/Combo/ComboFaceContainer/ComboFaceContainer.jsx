@@ -2,7 +2,7 @@ import ComboFaceBar from '../ComboFaceBar/ComboFaceBar';
 import style from './ComboFaceContainer.module.css';
 
 const ComboFaceContainer = ({ data, onTimeFaceClick }) => {
-    // console.log(data);
+    console.log('here in combo',data);
     return (
         <>
             {

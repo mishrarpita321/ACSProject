@@ -110,7 +110,7 @@ const UploadBtn = ({ widthInPercentage = "60%", setCombinedData, setFileSrc, set
 
     const retryUpload = () => {
         if (file) {
-            fileType === 'video' ? setShowFaces(false) : setShowEmoji(false);
+            fileType === 'video' || 'combined' ? setShowFaces(false) : setShowEmoji(false);
             uploadFile(file);
         }
     };
