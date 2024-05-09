@@ -1,0 +1,71 @@
+.uploadbtn {
+    background-color: #8e62a0;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    justify-content: var(--justifyContent, unset);
+    align-items: center;
+    position: relative;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+    /* width: 60%; */
+    width: var(--btnWidth, 100%);
+    margin-top: 3%;
+}
+
+.uploadbtn:hover {
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(120deg, #8e62a0, #eca1fe);
+    cursor: pointer;
+}
+
+.btnlabel {
+    position: absolute;
+    left: 50%;
+}
+
+
+
+
+
+
+
+/* .uploadbtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+} */
+
+.customFileUpload {
+    font-size: 20px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.fileName {
+    font-size: 18px;
+    flex-grow: 1;
+    margin: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.flexContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.errorMsg {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 8px;
+}

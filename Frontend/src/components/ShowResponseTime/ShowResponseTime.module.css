@@ -1,0 +1,19 @@
+.responseTime {
+    font-size: 12px;
+    color: #fff;
+    background-color: #8e62a0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 2px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+    font-style: italic;
+}
+.time {
+    display: flex;
+    align-items: center;
+}
+.text {
+    margin-left: 5px;
+}

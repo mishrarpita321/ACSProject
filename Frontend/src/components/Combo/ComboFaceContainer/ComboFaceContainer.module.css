@@ -1,0 +1,82 @@
+
+.comboFaceCategory{
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* margin: 18px 18px; */
+    padding-top: 18px;  /* it (padding) shoould be given differently because of its inherent padding of row */
+    padding-bottom: 32px;
+}
+.seperatorTitle{
+    color: #8D62A0;
+    font-weight: 600;
+}
+.sentimentTitle {
+    padding: 0.1rem 0;
+    width: 236px;
+    background-color: #8e62a0;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    /* box-shadow: 2px 4px 6px rgba(0,0,0,0.2);  */
+    transition: box-shadow 0.3s ease; 
+}
+
+/* .comboFaceListContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 200px));
+    gap: 1rem;
+} */
+
+.comboFaceListContainer{
+    margin-top: 18px;
+    display: grid;
+    gap: 1rem;
+}
+@media screen and (mix-width: 600px) {
+    .comboFaceListContainer{
+        grid-template-columns: repeat(auto-fill, minmax(236px, 1fr));
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .comboFaceListContainer{
+        grid-template-columns: repeat(auto-fill, minmax(236px, 236px));
+    }
+}
+
+/* @media screen and (min-width: 768px) {
+    .comboFaceListContainer{
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+} */
+
+/* @media screen and (min-width: 992px) {
+    .comboFaceListContainer{
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+} */
+
+/* @media screen and (min-width: 1200px) {
+    .comboFaceListContainer{
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+} */
+.comboFaceCard{
+    /* background-color: rgb(156, 235, 66); */
+    /* margin: 20px 0px; */
+    /* height: 20px; */
+    flex-direction: column;
+    /* align-items: flex-start; */
+    /* justify-content: center; */
+    padding: 0.5rem 0.5rem 1.9rem;
+    /* border-radius: 1rem; */
+    /* background-color: #f5f5f5; */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    border: 2px solid #8D62A0;
+    transition: all 0.3s;
+    cursor: pointer;
+}

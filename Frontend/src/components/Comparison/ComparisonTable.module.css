@@ -1,0 +1,91 @@
+.tabelContainer {
+    justify-self: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+
+
+.tableCell {
+    border: 0.1rem solid #ffffff;
+}
+
+
+
+.tableRow:not(.tableHeading1):not(.tableHeading2):nth-child(even) > :nth-child(n+2) {
+    background-color: #f6f7fb;
+}
+
+.tableRow:not(.tableHeading1):not(.tableHeading2):nth-child(odd) > :nth-child(n+2) {
+    background-color: #e8e9ed;
+}
+
+
+
+.tableHeading {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    /* background-color: #f9763e; */
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+
+.solutionBlock {
+    display: flex;
+    margin-top: 10px;
+}
+
+.solutionIconBox {
+    background-color: var(--border-color, #e15915);
+    justify-content: center;
+    align-items: center;
+}
+
+.solutionNameBlock{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.solutionNameLine {
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    top: 10px;
+    /* background-color: #e15915; */
+    background-color: var(--border-color, #e15915);
+}
+.solutionNameLine:after {
+    z-index: 0;
+    position: absolute;
+    top: -10px;
+    left: 0%;
+    margin-left: 0px;
+    content:'';
+    width: 0;
+    height: 0;
+    border-top: solid 12px transparent;
+    border-left: solid 12px var(--border-color, #e15915);
+    /* border-left: solid 12px #e15915; */
+    border-right: solid 12px transparent;
+}
+
+.solutionIcon {
+    padding: 10px;
+    width: 140px;
+}
+
+.solutionNameText {
+    font-weight: 500;
+    margin-left: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.compText{
+    padding-top: 20px;
+}
