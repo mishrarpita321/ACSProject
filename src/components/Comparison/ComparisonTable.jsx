@@ -47,9 +47,9 @@ const solutionData = [
   },
   {
     iconPath: 'https://img.icons8.com/color/150/000000/money.png', // A placeholder icon
-    basis: 'Price',
-    content1: 'Priced per 1,000 images processed, with a free tier available.',
-    content2: 'Priced per minute of video processed, with a free tier available.',
+    basis: 'Price (Face Detection)',
+    content1: 'Price per 1,000 images processed is free, till 50,00,000 is $1.50 and higher is $0.60 per month.',
+    content2: 'Price for 1,000 minute is free, beyond that is $0.10.',
     themeColor: '#0F9D58', // Google green
   },
   {
@@ -70,15 +70,8 @@ const solutionData = [
     iconPath: 'https://img.icons8.com/color/150/000000/happy.png', // A placeholder icon for emotion detection
     basis: 'Emotion Detection',
     content1: 'Capable of detecting emotional expressions on faces in images.',
-    content2: 'Does not provide emotion detection in its current feature set.',
+    content2: 'Only smiling emotion detection in its current feature set.',
     themeColor: '#812787', // Google yellow
-  },
-  {
-    iconPath: 'https://img.icons8.com/color/150/000000/settings.png', // A placeholder icon
-    basis: 'Customization',
-    content1: 'Customizable and can train custom models with AutoML Vision.',
-    content2: 'Customizable with the ability to train custom models with AutoML Video Intelligence.',
-    themeColor: '#0F9D58', // Google green
   },
   {
     iconPath: 'https://img.icons8.com/color/150/000000/group-of-projects.png', // A placeholder icon
@@ -87,7 +80,6 @@ const solutionData = [
     content2: 'Suited for apps that need to search, discover, and understand video content at scale.',
     themeColor: '#4285F4', // Google blue
   },
-  // ...add more comparisons if necessary
 ];
 
 
