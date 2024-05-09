@@ -77,6 +77,17 @@ const Combined = () => {
 
     }, [showLoaderVideo])
 
+    useEffect(() => {
+        if (showLoaderVision) {
+            console.log("HHHHHHHHHHHHHHHHHH")
+            // setShowPeopleVideo(false);
+            setShowEmojiImage(false)
+            setVisionEmojiClicked(false)
+            setVisionData([]);
+        }
+
+    }, [showLoaderVision])
+
 
 
 

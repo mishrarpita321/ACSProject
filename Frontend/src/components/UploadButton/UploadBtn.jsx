@@ -82,14 +82,14 @@ const UploadBtn = ({ widthInPercentage = "60%", setCombinedData, setFileSrc, set
                 // data = fileType === 'video' ? response.data : transformApiResponse(response.data);
 
                 if (fileType === 'video') {
-                    data= response.data;
+                    data = response.data;
                     setVideoData(data);
                     setShowFaces(true);
                 } else if (fileType === 'image') {
                     data = transformApiResponse(response.data);
                     setVisionData(data);
                     setShowEmoji(true);
-                }else {
+                } else {
                     data = transformCombinedApiResponse(response.data);
                     setCombinedData(data);
                     setShowFaces(true);
@@ -109,8 +109,15 @@ const UploadBtn = ({ widthInPercentage = "60%", setCombinedData, setFileSrc, set
     };
 
     const retryUpload = () => {
+        console.log('retry', fileType)
         if (file) {
-            fileType === 'video' || 'combined' ? setShowFaces(false) : setShowEmoji(false);
+            if (fileType === 'video' || fileType === 'combined') {
+                setShowFaces(false)
+            }
+            else {
+                setShowEmoji(false)
+            }
+            // fileType === 'video' || 'combined' ? setShowFaces(false) : setShowEmoji(false);
             uploadFile(file);
         }
     };

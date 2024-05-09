@@ -19,7 +19,7 @@ const EmojiPicker = ({visionData=null, setFilteredData, setShowFaces}) => {
             // const uniqueEmos = Object.keys(visionData.data) 
             //     console.log('uniqueEmos',uniqueEmos);
 
-            const uniqueEmos = ['joyful', 'surprise', 'anger', 'sorrow','default']
+            const uniqueEmos = ['joyful', 'surprise', 'angry', 'sad','default']
             
             const emojiOptions = uniqueEmos.map(emo => ({
                 id: emo,
@@ -42,9 +42,9 @@ const EmojiPicker = ({visionData=null, setFilteredData, setShowFaces}) => {
         switch (emo) {
             case 'surprise':
                 return '😀';
-            case 'anger':
+            case 'angry':
                 return '😡';
-            case 'sorrow':
+            case 'sad':
                 return '😢';
             case 'joyful':
                 return '😂';
